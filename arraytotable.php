@@ -6,4 +6,14 @@
 	);
 
 	print_r($rows);
+
+	echo '<table>';
+	foreach($rows as $row){
+		echo '<tr>';
+		foreach ($row as $column){
+			echo '<td>' .$column .'</td>';
+		}
+		echo '</tr>';
+	}
+	echo '</table>';
 ?>
