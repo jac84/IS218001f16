@@ -1,19 +1,34 @@
 <?php
-	$rows = array(
+	$anArray = array(
 		array('A1', 'A2', 'A3'),
 		array('B1', 'B2', 'B3'),
 		array('C1', 'C2', 'C3')
 	);
 
-	print_r($rows);
+	print_r($anArray);
+	echo '<br>';
 
-	echo '<table>';
-	foreach($rows as $row){
-		echo '<tr>';
-		foreach ($row as $column){
-			echo '<td>' .$column .'</td>';
+	class htmlTable{
+		protected $rows;
+
+		public function __construct($a){
+			$this->rows = $a;
 		}
-		echo '</tr>';
+
+
+		public function arrayToTable(){
+			print_r('<table>');
+			foreach($this->rows as $row){
+				print_r('<tr>');
+				foreach ($row as $column){
+					print_r('<td>' .$column .'</td>');
+				}
+				print_r('</tr>');
+			}
+			print_r('</table>');
+		}
 	}
-	echo '</table>';
+
+	$newTable = new htmlTable($anArray);
+	$newTable -> arrayToTable();
 ?>
