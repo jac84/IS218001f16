@@ -43,7 +43,9 @@
 		return $csvRow;
 	}
 
-	$csvFile; //set to name of csv file
+	$csvFile = 'example.csv'; //set to name of csv file
 
 	$csv = readCSV($csvFile);
+
+	print_r($csv);
 ?>
