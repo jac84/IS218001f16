@@ -31,4 +31,19 @@
 
 	$newTable = new htmlTable($anArray);
 	$newTable -> arrayToTable();
+
+	//csv assignment
+
+	function readCSV($csvFile){
+		$openFile = fopen($csvFile, 'r');
+		while(!feof($openFile)){
+			$csvRow[] = fgetcsv($openFile, 1024);
+		}
+		fclose($openFile);
+		return $csvRow;
+	}
+
+	$csvFile; //set to name of csv file
+
+	$csv = readCSV($csvFile);
 ?>
