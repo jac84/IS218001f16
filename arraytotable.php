@@ -48,4 +48,9 @@
 	$csv = readCSV($csvFile);
 
 	print_r($csv);
+
+	echo '<br><br>';
+
+	$csvTable = new htmlTable($csv);
+	$csvTable -> arrayToTable();
 ?>
