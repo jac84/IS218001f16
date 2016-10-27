@@ -53,4 +53,26 @@
 
 	$csvTable = new htmlTable($csv);
 	$csvTable -> arrayToTable();
+
+	//combining both!
+
+	class csvTable{
+		protected $inputCSV;
+		
+		public function __construct($c){
+			$this->inputCSV = $c;
+		}
+
+		public function csvToTable($inputCSV){
+			$csvArray = readCSV($inputCSV);
+			return $csvArray;
+		}
+
+	}
+
+	$testTable = new csvTable($csvFile);
+	$out = $testTable::csvToTable();
+	print_r($out);
+
+
 ?>
