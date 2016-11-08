@@ -11,7 +11,7 @@ class BookAdapter{
 	{
 
 	function getAuthorAndTitle(){
-		return $this->getTitle().'by'.$this->getAuthor();
+		return $this->getTitle().'by'.$this->getAuthor();//adds this function to the base Book obj
 	}
 }
 
