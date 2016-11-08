@@ -12,10 +12,6 @@ class Book{
 
 	function getAuthor(){return $this->author;}
 	function getTitle(){return $this->title;}
-
-	function getAuthorAndTitle(){
-		return $this->getTitle().'by'.$this->getAuthor();
-	}
 }
 
 ?>
