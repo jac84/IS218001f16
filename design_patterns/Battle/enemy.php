@@ -5,6 +5,8 @@
     protected $magic;
     protected $atkDmg;
 
+
+
     function __construct($hp, $mp, $atk){
       $this->health = $hp;
       $this->magic = $mp;
