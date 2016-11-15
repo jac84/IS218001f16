@@ -1,6 +1,6 @@
 <?php
 
-  require('enemy.php')
+  require 'enemy.php';
 
   //in strategy, if player is over lvl10 the enemy screams
   class EnemyAdapter{
