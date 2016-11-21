@@ -1,12 +1,10 @@
 <?php
 
-  public class Enemy{
+  class Enemy{
     protected $level;
     protected $health;
     protected $magic;
     protected $atkDmg;
-
-
 
     function __construct($lvl, $hp, $mp, $atk){
       $this->level = $lvl;

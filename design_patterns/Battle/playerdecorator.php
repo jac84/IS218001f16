@@ -18,11 +18,11 @@
       $this->magic = $this->player->getMagic();
     }
     function resetAtk(){
-      $this->atk = $this->player->getAtk);
+      $this->atk = $this->player->getAtk();
     }
 
     function showMagic(){ return $this->magic; }
-    function showMagic(){ return $this->atk; }
+    function showAtk(){ return $this->atk; }
   }
 
   //MagicSword adds magic modifier
