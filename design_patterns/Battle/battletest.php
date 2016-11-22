@@ -1,6 +1,7 @@
 <?php
-require_once 'player.php';
-include_once 'enemy.php';
+
+//removed include player and enemy files since player decorator and enemy
+adapter already require them
 include_once 'singletonex.php';
 include_once 'playerdecorator.php';
 include_once 'enemyadapter.php';
