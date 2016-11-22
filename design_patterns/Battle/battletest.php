@@ -5,7 +5,7 @@ include_once 'singletonex.php';
 include_once 'playerdecorator.php';
 include_once 'enemyadapter.php';
 
-/*//test everything
+//test everything
 echo "Enter Player 1!" . '<br>';
 $player1 = new Player(20, 30, 10, 15); //created a new Player
 print_r(player1 . '<br>');
@@ -33,8 +33,6 @@ print_r("Magic Sword equipped! Current magic: " . $decorator->showMagic() . '<br
 
 echo "Enemy! Let out a war cry!" . '<br>';
 $enemyAdapt = new EnemyAdapter($enemy1);
-$enemyAdapt->warCry();8*/
-
-print_r(get_declared_classes());
+$enemyAdapt->warCry();
 
 ?>
