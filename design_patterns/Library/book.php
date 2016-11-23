@@ -11,16 +11,19 @@ class Book{
   }
   function getAuthor() { return $this->author; }
   function getTitle() { return $this->title; }
+  function checkStatus() { return $this->checkedIn; }
 
   function getAuthorAndTitle() { return $this->getTitle().' by '.$this->getAuthor(); }
 
-  function checked(){
-    if(!$checkedIn){
+  /*function checked(){
+    if($checkedIn){
       //set checkedIn to false and italicize title
+      $this->checkedIn = false;
     } else {
-      //
+      //checks book back in
+      $this->checkedIn = true;
     }
-  }
+  }*/
 }
 
 ?>
