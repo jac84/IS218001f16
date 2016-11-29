@@ -12,8 +12,6 @@ for ($i = 0; $i < count($titles); $i++){
   $books[$i] = BookFactory::create($titles[$i], $authors[$i]);
 }
 
-foreach($books as $b){
-  print_r($b->getTitle() . " by " . $b->getAuthor() . " " . $b->checkStatus() . '<br>');
-}
+
 
 ?>
