@@ -1,0 +1,156 @@
+**WRITE THESE DOWN IN YOUR NOTES LATER THESE ARE ACTUALLY HELPFUL**
+
+3 Types of Design Patterns
+- structural: deal with relationships b/t entities, making it easier for these entities to work together
+- creational: instantiation mechanisms, making it easier to create objects in a way that suits them
+- behavioral: communication b/t entities and make it easier and more flexible for these entities to communicate
+-------------------------
+STRATEGY PATTERN
+- behavioral
+- allows to decide which course of action a program should take, based on a specific context during runtime
+- encapsulate 2 different algorithms inside 2 classes, and decide at runtime which strategy to take
+ex: 
+class User[
+	public function CreateOrUpdate($name, $address, $mobile, $userid = null){
+		if(is-nill($userid)){ //means userid doesnt exist yet
+			//something;
+		} else {
+			//something else;
+		}
+	}
+}
+-------------------------
+ADAPTER PATTERN
+- structural
+- repurpose a class with a diferent interface
+- allows class to be used by a system which uses different calling methods
+- also lets you alter some of the inputs being received from the client class
+	- makes it into something compatible with the adaptee's functions
+- can also be refereced as WRAPPER PATTERN
+	- "wraps" actions into a class and reuse in the correct situations
+- classic example:
+	- create a domain class for table classes
+	- incorrect: calling different table classes and calling their functions one-by-one
+	- correct: encapsulate all of those methods into one method using an adapter class
+	- allows to not only reuse whatevere action you want, it also keeps from repeating code
+instead of:
+	$user = new User();
+	$user -> CreateOrUpdate(//inputs);
+	$profile = new Profile();
+	$profile = CreateOrUpdate(//inputs);
+use:
+	$account_domain = new Account();
+	$accouint_domain -> NewAccount(//inputs);
+ex:
+class Account(){
+	public function NewAccount(//inputs){
+		$user = new User();
+		$user -> CreateOrUpdate(//inputs);
+
+		$profile = new Profile();
+		$profile -> CreateOrUpdate(//inputs);
+	}
+}
+-------------------------
+FACTORY METHOD PATTERN
+- creational
+- it acts like a factory of object instances
+- encapsulate the creational procedure that may span different classes into one single function
+- if provided correct context, will be able to return the correct object
+- best used when you have multiple different variations of a single entity
+ex:
+abstract class Button{
+	protected $_html;
+
+	public function getHtml(){
+		return $this->_html;
+	}
+}
+
+class ImageButton extends Button{
+	protected $_html = "..."; //HTML for image-based button
+}
+class InputButton extends Button(
+	protected $_html = "..."; //HYML for normal HTML button (<input type="button"...)
+)
+class FlashButton extends Button{
+	protected $_html = "..."; //HTML for Flash-based button
+}
+
+class ButtonFactory{
+	public static function createButton($type){
+		$baseClass = 'Button';
+		$targetClass = ucfirst($type).$baseClass;
+
+		if(class_exists($targetClass) && is_subclass_of($targetClass, $baseClass)){
+			return new $targetClass;
+		} else {
+			throw new Exception("The button type '$type' is not recognized");
+		}
+	}
+}
+
+$buttons = array('image','input','flash');
+foreach($buttons as $b){
+	echo ButtonFactory::createButton($b)->getHTML();
+}
+-------------------------
+DECORATOR PATTERN
+- structural
+- add new or additional behavior to an object during runtime, depending on the situation
+- extended functions can be applied to one specific instance
+	- still be able to create an original instance that doesnt have new functions
+- allows for combining multiple decorators to one instance
+- alternative to subclassing
+	- allows to add new behavior during runtime, if the situation calls for it
+- implementing decorator pattern:
+	1. subclass the original "compornent" class into a "decorator" class
+	2. In decorator class, add a component pointer as a field
+	3. pass a component to the decorator constructor to initialize the compornent pointer
+	4. in decorator class, redirect all component methods to the component pointer
+	5. in decorator class, override any component method(s) whose behavior needs to be modified
+- best used when you have an entity which needs to have new behavior only if the situation requires it
+ex: have an HTML logout link elemennt that you want to do slightly different based on the current page
+	- establish the different "decorations" needed
+		1. If on homepage & logged in, link is wrapped in <h2>
+		2. If on different & logged in, link is wrapped in <u>
+		3. If logged in, have link wrapped in <strong>
+class HtmlLinks{
+	//some methods available to all html links
+}
+
+class LogoutLink extends HtmlLinks(){
+	protected $_html;
+
+	public function __construct(){
+		$this->_html = "<a href=\">Logout</a>"
+	}
+	
+	public function setHtml($html){
+		$this->_html = $html;
+	}
+
+	public function render(){
+		echo $this->_html;
+	}
+}
+
+class LogoutLinkH2Decorator extends HtmlLinks{
+	protected $_logout_link;
+
+	public function __construct($logout_link){
+		$this->_logout_link = $logout_link;
+		$this->setHTML("<h2>" . $this->_html . "</h2>");
+	}
+
+	public function __call($name, $args){
+		$this->_logout_link->$name($args[0]);
+	}
+}
+-----------------------
+SINGLETON PATTERN
+- creational
+- makes sure that you have one single instance of a particular class in the duration of your runtime
+- provides a global point of access to the single instance
+- makes it easier to set up a point of "coordination" for otheer objects that also use singleton instance
+- 
