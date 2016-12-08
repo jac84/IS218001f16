@@ -18,12 +18,26 @@ print_r($someVars);
 
 echo '<br>' . "-----" . '<br>';
 
-echo '<h2>' . "isset() example" . '</h2>' . '<br>';
+foreach($someVars as $var){
+	if(isset($var)){
+		echo "isset(" . $var . ") is true. " . $var . " is a set value.";
+	} elseif (empty($var)){
+		echo "empty(" . $var . ") is true. " . $var . " is an empty value.";
+	} elseif (is_null($var)){
+		echo "is_null(" . $var . ") is true. " . $var . " is null.";
+	}
+	echo '<br>';
+	if(isset($var) && empty($var)){
+		echo $var . " is either 0 or false." . '<br>';
+	}
+	echo '<br>';
+}
+/*echo '<h2>' . "isset() example" . '</h2>' . '<br>';
 foreach($someVars as $var){
 	echo "$value <br> isset(" . $var . ") is: " .  isset($var) . "<br>";
-}
+}*/
 
-echo '<br>' . "-----" . '<br>';
+/*echo '<br>' . "-----" . '<br>';
 
 echo '<h2>' . 'empty() example' . '</h2>' . '<br>';
 foreach($someVars as $var){
@@ -37,7 +51,7 @@ foreach($someVars as $var){
 	echo "$value <br> is_null(" . $var . ") is: " .  is_null($var) . "<br>";
 }
 
-echo '<br>' . "-----" . '<br>';
+echo '<br>' . "-----" . '<br>';*/
 
 
 ?>
