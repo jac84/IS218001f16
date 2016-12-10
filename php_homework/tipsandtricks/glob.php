@@ -5,6 +5,9 @@
 
 $phpFiles = glob('*.php'); //searches for all php files
 
+//can also search for multiple file types
+//eg: glob('*.{php,txt}', GLOB_BRACE)
+
 print_r($phpFiles);
 
 ?>
