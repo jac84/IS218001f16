@@ -22,7 +22,7 @@ echo $string. "\n";
 
 $compressed = gzcompress($string);
 
-echo $compressed. "\n";
+echo $compressed. "\n"; //returns garbage text
 
 echo "Original size: ". strlen($string)."\n";
 
