@@ -8,20 +8,20 @@ class CsvWriter{
 	public function writeCsv($arr, $file){
 		try{
 			$csv = fopen($file, 'w');
-		} catch(Exception e){
-			echo "Caught exception: ". $e->getMessage(). "\n";
-			die("File read error");
+		}catch(Exception $e){
+			echo 'Caught exception: '. $e->getMessage(). "\n";
+			die('File read error');
 		}
 
 		foreach($arr as $fields){
 			try{
-				fputcsv($fp, $fields);
-			} catch(Exception f){
-				echo "Caught exception: ".$f->getMessage(). "\n". "Write error";
+				fputcsv($csv, $fields);
+			} catch(Exception $f){
+				echo 'Caught exception: '.$f->getMessage(). "\n";
 				die("File write error");
 			}
 		}
-		fclose($file);
+		fclose($csv);
 	}
 
 }
@@ -33,8 +33,6 @@ $list = array(
 );
 
 $writer = new CsvWriter();
-CsvWriter->writeCsv($list, 'newcsv.csv');
-
-$csv = array_map('str_getcsv', file('newcsv.csv');
+$writer->writeCsv($list, 'newcsv.csv');
 
 ?>
