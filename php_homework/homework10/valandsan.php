@@ -51,13 +51,4 @@ $san->sanitize($nIn, $eIn);
 $val = new FormVal();
 $val->validate($san->getSanEmail($eIn));
 
-/*if (isset($_POST['email'])){
-  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); //sanitizes email
-  if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-    echo $email. " is a valid email";
-  } else {
-    echo $email. " is NOT a valid email";
-  }
-}*/
-
 ?>
