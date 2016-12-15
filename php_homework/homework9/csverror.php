@@ -8,20 +8,23 @@ class CsvWriter{
 	public function writeCsv($arr, $file){
 		try{
 			$csv = fopen($file, 'w');
+			echo 'File '. $file. ' successfully opened'. '<br>';
 		}catch(Exception $e){
-			echo 'Caught exception: '. $e->getMessage(). "\n";
+			echo 'Caught exception: '. $e->getMessage(). '<br';
 			die('File read error');
 		}
 
 		foreach($arr as $fields){
 			try{
 				fputcsv($csv, $fields);
+				echo 'Successfully wrote csv table to '. $file. '<br';
 			} catch(Exception $f){
-				echo 'Caught exception: '.$f->getMessage(). "\n";
+				echo 'Caught exception: '.$f->getMessage(). '<br';
 				die("File write error");
 			}
 		}
 		fclose($csv);
+		echo $file. " is now closed and ready to be opened in Excel";
 	}
 
 }
