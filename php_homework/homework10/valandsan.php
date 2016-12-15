@@ -32,8 +32,12 @@ $san = new EmailSan;
 $san->getPost();*/
 
 if (isset($_POST['email'])){
-  echo filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-  echo "<br/><br/>";
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); //sanitizes email
+  if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    echo $email. " is a valid email";
+  } else {
+    echo $email. " is NOT a valid email";
+  }
 }
 
 ?>
