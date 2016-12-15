@@ -12,41 +12,27 @@ can search for type of filters @ http://php.net/manual/en/filter.filters.php
 
 class FormSan{
 
-  private $email;
+  function sanitize($name, $email){
+    echo "Name before sanitizing: ". $name . "<br />";
+    echo "Name after sanitizing: ". filter_var($name, FILTER_SANITIZE_STRING) . "<br />";
+    echo "<br/>";
 
-  public function __construct($e){
-    $this->email = $e;
-  }
-
-  function sanitize(){
-    echo "Email before sanitizing: ". $email. "<br />";
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    echo "Email after sanitizing: ". $email. "<br />";
+    echo "Email before sanitizing: ". $email . "<br />";
+    echo "Email after sanitizing: ". filter_var($email, FILTER_SANITIZE_EMAIL) . "<br />";
     echo "<br/><br/>";
   }
 
-  function getSanEmail(){
+  function getSanEmail($email){
     return filter_var($email, FILTER_SANITIZE_EMAIL);
+  }
+  function getSanName($name){
+    return filter_var($name, FILTER_SANITIZE_STRING);
   }
 }
 
 class FormVal{
 
-  private $name;
-  private $email;
-
-  public function __construct($n, $e){
-    $this->name = $n;
-    $this->email = $e;
-  }
-
-  function validate(){
-    if(filter_var($name, FILTER_VALIDATE_STRING)){
-      echo $name. " is a valid name";
-    } else {
-      echo $name. " is NOT a valid name";
-    }
-
+  function validate($email){
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
       echo $email. " is a valid email";
     } else {
@@ -56,11 +42,14 @@ class FormVal{
 
 }
 
-$san = new FormSan($_POST['email']);
-$san->sanitize();
+$nIn = $_POST['name'];
+$eIn = $_POST['email'];
 
-$val = new FormVal($_POST['name'], $san->getSanEmail());
-$val->validate();
+$san = new FormSan();
+$san->sanitize($nIn, $eIn);
+
+$val = new FormVal();
+$val->validate($san->getSanEmail($eIn));
 
 /*if (isset($_POST['email'])){
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); //sanitizes email
