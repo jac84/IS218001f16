@@ -1,5 +1,5 @@
 <?php
-define("UPLOAD_DIR", "/afs/cad.njit.edu/u/j/a/jac84/public_html/UPLOADS");
+/*define("UPLOAD_DIR", "");
 
 if (!empty($_FILES["file"])) {
     $fileIn = $_FILES["file"];
@@ -13,7 +13,7 @@ if (!empty($_FILES["file"])) {
 
     // ensure a safe filename
     $name = preg_replace("/[^A-Z0-9._-]/i", "_", $fileIn["name"]);
-    echo "file name is ". $name;
+    echo "file name is ". $name
 
     // don't overwrite an existing file
     $i = 0;
@@ -33,6 +33,22 @@ if (!empty($_FILES["file"])) {
 
     // set proper permissions on the new file
     chmod(UPLOAD_DIR . $name, 0644);
-}
+}*/
 
+$target_dir = "uploads/"; //afs/cad.njit.edu/u/j/a/jac84/public_html/is218001f16/php_homework/homework11";
+$target_file = $target_dir . basename($_FILES["file"]['name']);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+if(isset($_POST["submit"])) {
+    print_r('File '. $_FILES["file"]['name']. " is uploaded to ". $_FILES["file"]['tmp_name']);
+    /*$check = getimagesize($_FILES["file"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }*/
+}
 ?>
