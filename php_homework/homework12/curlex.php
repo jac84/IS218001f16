@@ -52,12 +52,12 @@ class CurlEx{
 
 $c = new CurlEx;
 
-$c->httpGet('http://www.njit.edu');
+$c->httpGet('https://web.njit.edu/~jac84/is218001f16/php_homework/homework12/curlpost.html');
 
 $params = array(
    "name" => "Uh",
    "age" => "2",
    "location" => "the void"
 );
-$c->httpPost('http://www.njit.edu', $params);
+$c->httpPost('https://web.njit.edu/~jac84/is218001f16/php_homework/homework12/curlpost.html', $params);
 ?>
